@@ -4,15 +4,22 @@ import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import model.Client;
+import model.Player;
 
 public class FurrierController {
 	private Stage stage;
@@ -135,4 +142,63 @@ public class FurrierController {
 			e.printStackTrace();
 		}
 	}
+    @FXML
+    private TableView<Client> tableReports;
+    @FXML
+    private TableColumn<Client, String> idName;
+
+    @FXML
+    private TableColumn<Client, String> idLastName;
+
+    @FXML
+    private TableColumn<Client, Integer> idIdentification;
+
+    @FXML
+    private TableColumn<Client, String> idPhone;
+
+    @FXML
+    private TableColumn<Client, Double> idRemainingBalance;
+
+    @FXML
+    private TableColumn<Client, Double> idPayment;
+
+    @FXML
+    private TableColumn<Client, String> idState;
+
+    @FXML
+    private TextField idText;
+
+    @FXML
+    private TextField consecutivoText;
+
+    @FXML
+    void searchReport(ActionEvent event) {
+
+    }
+
+    public void loadTableReports() {
+    	basePane.setOnKeyPressed(null);
+		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("Reports.fxml"));
+		fxmload.setController(this);
+		Parent root;
+		try {
+			root = fxmload.load();
+			basePane.getChildren().clear();
+			basePane.setCenter(root);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		tableReports.getItems().clear();
+		//METODO PARA LISTAR TODOS LOS PRODUCTOS
+			ObservableList<Client>list= FXCollections.observableArrayList(players);
+			tableReports.setItems(list);
+			idName.setCellValueFactory(new PropertyValueFactory<Client,String>("name"));
+			idLastName.setCellValueFactory(new PropertyValueFactory<Client,String>("lastName"));
+			idIdentification.setCellValueFactory(new PropertyValueFactory<Client,Integer>("id"));
+			idPhone.setCellValueFactory(new PropertyValueFactory<Client,String>("phone"));
+			idRemainingBalance.setCellValueFactory(new PropertyValueFactory<Client,Double>("remainingBalance"));
+			idPayment.setCellValueFactory(new PropertyValueFactory<Client,Double>("pays"));
+			idState.setCellValueFactory(new PropertyValueFactory<Client,String>("state"));
+			
+    }
 }

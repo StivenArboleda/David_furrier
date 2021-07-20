@@ -8,15 +8,15 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="686.0" prefWidth="1009.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView layoutX="67.0" layoutY="318.0" prefHeight="319.0" prefWidth="876.0">
+      <TableView fx:id="tableReports" layoutX="67.0" layoutY="318.0" prefHeight="319.0" prefWidth="876.0">
         <columns>
-          <TableColumn prefWidth="121.0" text="Nombre" />
-          <TableColumn prefWidth="124.0" text="Apellido" />
-            <TableColumn prefWidth="131.0" text="Id" />
-            <TableColumn prefWidth="124.0" text="Telefono" />
-            <TableColumn prefWidth="121.0" text="Saldo Restante" />
-            <TableColumn prefWidth="118.0" text="Abono" />
-            <TableColumn prefWidth="136.0" text="Estado" />
+          <TableColumn fx:id="idName" prefWidth="121.0" text="Nombre" />
+          <TableColumn fx:id="idLastName" prefWidth="124.0" text="Apellido" />
+            <TableColumn fx:id="idIdentification" prefWidth="131.0" text="Id" />
+            <TableColumn fx:id="idPhone" prefWidth="124.0" text="Telefono" />
+            <TableColumn fx:id="idRemainingBalance" prefWidth="121.0" text="Saldo Restante" />
+            <TableColumn fx:id="idPayment" prefWidth="118.0" text="Abono" />
+            <TableColumn fx:id="idState" prefWidth="136.0" text="Estado" />
         </columns>
       </TableView>
       <Button layoutX="418.0" layoutY="266.0" mnemonicParsing="false" onAction="#searchReport" prefHeight="37.0" prefWidth="175.0" style="-fx-background-color: #ffffff;" />
