@@ -2,16 +2,12 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="686.0" prefWidth="1009.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="252.0" layoutY="286.0" mnemonicParsing="false" onAction="#loadInventory" prefHeight="60.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" text="oila">
-         <font>
-            <Font size="34.0" />
-         </font></Button>
-      <Button layoutX="585.0" layoutY="286.0" mnemonicParsing="false" onAction="#loadReports" prefHeight="60.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" />
-      <Button layoutX="252.0" layoutY="458.0" mnemonicParsing="false" onAction="#loadEntry" prefHeight="60.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" />
-      <Button layoutX="585.0" layoutY="458.0" mnemonicParsing="false" onAction="#loadDeliveries" prefHeight="60.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" />
+      <Button layoutX="373.0" layoutY="220.0" mnemonicParsing="false" onAction="#loadReports" prefHeight="51.0" prefWidth="153.0" style="-fx-background-color: #ffffff;" />
+      <Button layoutX="128.0" layoutY="331.0" mnemonicParsing="false" onAction="#loadEntry" prefHeight="51.0" prefWidth="153.0" style="-fx-background-color: #ffffff;" />
+      <Button layoutX="373.0" layoutY="331.0" mnemonicParsing="false" onAction="#loadDeliveries" prefHeight="51.0" prefWidth="153.0" style="-fx-background-color: #ffffff;" />
+      <Button layoutX="128.0" layoutY="220.0" mnemonicParsing="false" onAction="#loadInventory" prefHeight="51.0" prefWidth="153.0" style="-fx-background-color: #ffffff;" />
    </children>
 </Pane>

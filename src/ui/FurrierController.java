@@ -1,12 +1,10 @@
 package ui;
-
-import java.awt.event.ActionEvent;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,9 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.Client;
-import model.Player;
 
 public class FurrierController {
 	private Stage stage;
@@ -28,24 +24,6 @@ public class FurrierController {
 	
 	public FurrierController(Stage s) throws IOException {
 		stage=s;
-	}
-	public void initialize() {
-		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-	
-				@Override
-				public void handle(WindowEvent event) {
-					System.out.println(" ");
-					try {
-						//METODO PARA SERIALIZAR TODO INVENTARIO
-						um.saveRootUsers();
-					} catch (FileNotFoundException e) {
-						
-					} catch (IOException e) {
-						
-						e.printStackTrace();
-					}
-				}
-			});
 	}
 	public void loadMenuScreen(){
 		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("InitialMenu.fxml"));
@@ -61,7 +39,7 @@ public class FurrierController {
 	}
 	@FXML
 	void loadDeliveries(ActionEvent event) {
-
+		loadReportsScreen();
 	}
 
 	@FXML
@@ -76,7 +54,7 @@ public class FurrierController {
 
 	@FXML
 	void loadReports(ActionEvent event) {
-		loadReportsScreen();
+		
 	}
 	public void loadEntryScreen(){
 		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("Entry.fxml"));
@@ -173,10 +151,10 @@ public class FurrierController {
 
     @FXML
     void searchReport(ActionEvent event) {
-
+    	loadTableReports();
     }
 
-    public void loadTableReports() {
+   public void loadTableReports() {
     	basePane.setOnKeyPressed(null);
 		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("Reports.fxml"));
 		fxmload.setController(this);
@@ -190,7 +168,7 @@ public class FurrierController {
 		}
 		tableReports.getItems().clear();
 		//METODO PARA LISTAR TODOS LOS PRODUCTOS
-			ObservableList<Client>list= FXCollections.observableArrayList(players);
+			ObservableList<Client>list= FXCollections.observableArrayList();
 			tableReports.setItems(list);
 			idName.setCellValueFactory(new PropertyValueFactory<Client,String>("name"));
 			idLastName.setCellValueFactory(new PropertyValueFactory<Client,String>("lastName"));
