@@ -39,7 +39,7 @@ public class FurrierController {
 	}
 	@FXML
 	void loadDeliveries(ActionEvent event) {
-		loadReportsScreen();
+		loadDeliveriesScreen();
 	}
 
 	@FXML
@@ -108,8 +108,8 @@ public class FurrierController {
     void addEntry(ActionEvent event) {
 
     }
-    public void loadReportsScreen(){
-		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("Reports.fxml"));
+    public void loadDeliveriesScreen(){
+		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("Deliveries.fxml"));
 		fxmload.setController(this);
 		Parent root;
 		try {
@@ -151,12 +151,12 @@ public class FurrierController {
 
     @FXML
     void searchReport(ActionEvent event) {
-    	loadTableReports();
+    	loadTableDeliveries();
     }
 
-   public void loadTableReports() {
+   public void loadTableDeliveries() {
     	basePane.setOnKeyPressed(null);
-		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("Reports.fxml"));
+		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("Deliveries.fxml"));
 		fxmload.setController(this);
 		Parent root;
 		try {
@@ -179,4 +179,20 @@ public class FurrierController {
 			idState.setCellValueFactory(new PropertyValueFactory<Client,String>("state"));
 			
     }
+   @FXML
+   void loadBack(ActionEvent event) {
+	   loadMenuScreen();
+   }
+   @FXML
+   void loadBackReports(ActionEvent event) {
+	   loadMenuScreen();
+   }
+   @FXML
+   void loadSave(ActionEvent event) {
+
+   }
+   @FXML
+   void loadSearch(ActionEvent event) {
+
+   }
 }
