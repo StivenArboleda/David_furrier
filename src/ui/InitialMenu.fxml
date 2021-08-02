@@ -10,7 +10,7 @@
    <children>
       <ImageView fitHeight="544.0" fitWidth="684.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Downloads/PantallaP_Mesa%20de%20trabajo%201.png" />
+            <Image url="@../../images/PantallaP_Mesa%20de%20trabajo%201.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="21.0" fitWidth="76.0" layoutX="-127.0" layoutY="446.0" pickOnBounds="true" preserveRatio="true">
