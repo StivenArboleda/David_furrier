@@ -1,13 +1,19 @@
 package ui;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import javax.swing.JOptionPane;
 
+import CustomExceptions.AlreadyAddedNumberException;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -15,9 +21,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.Central;
 import model.Client;
 
 public class FurrierController {
+	
+	private Central c;
+	
 	private Stage stage;
 	@FXML
 	private BorderPane basePane;
@@ -37,6 +47,7 @@ public class FurrierController {
 			e.printStackTrace();
 		}
 	}
+	
 	@FXML
 	void loadDeliveries(ActionEvent event) {
 		loadDeliveriesScreen();
@@ -93,13 +104,13 @@ public class FurrierController {
     private TextField totalBalanceText;
 
     @FXML
-    private TextField admisionText;
+    private DatePicker admisionText;
 
     @FXML
     private TextField consecutivoClientText;
 
     @FXML
-    private TextField deliveryText;
+    private DatePicker deliveryText;
 
     @FXML
     private TextArea descriptionText;
@@ -187,12 +198,65 @@ public class FurrierController {
    void loadBackReports(ActionEvent event) {
 	   loadMenuScreen();
    }
+
+/*	@FXML
+   void loadSave(ActionEvent event) {
+	   totalPayment();
+	   
+	   Timer timer = new Timer();
+	   
+	   TimerTask loadAgain = new TimerTask() {
+		
+		@Override
+		public void run() {
+			
+			Platform.runLater(new Runnable() {
+				public void run() {
+					loadEntryScreen();
+				}
+			});
+		}
+	};
+	timer.schedule(loadAgain, 3000);
+	}*/
+   
    @FXML
    void loadSave(ActionEvent event) {
-
+	   double initial = Double.parseDouble(initialPaymentText.getText());
+	   double reimaning = Double.parseDouble(reimaningBalanceText.getText());
+	   double total = initial + reimaning;
+	   JOptionPane.showMessageDialog(null, "El saldo total es: " + total);
+	   try {
+		c.addClients(nameClienteText.getText(), lastNameClienteText.getText(), phoneText.getText());
+		loadEntryScreen();
+	} catch (AlreadyAddedNumberException e) {
+		
+		e.printStackTrace();
+	}
+	   loadEntryScreen();
    }
+   
+   void loadProduct() {
+	   
+   }
+   
    @FXML
    void loadSearch(ActionEvent event) {
-
+	   
+	   String phone = idText.getText();
+	   Client client = c.search(phone);
+	   if( client != null){
+		   //consecutivoText.setText(client.getRepair().get(0).getConsecutive() + "");
+		   consecutivoText.setText("Hola c:");
+	   }
+	   
    }
+   /*@FXML
+   void totalPayment() {
+	   if(initialPaymentText.getText() != null && reimaningBalanceText.getText() != null) {
+		   double initial = Double.parseDouble(initialPaymentText.getText());
+		   double reimaning = Double.parseDouble(reimaningBalanceText.getText());
+		   totalBalanceText.setText(initial+reimaning+"");
+	   }
+   }*/
 }

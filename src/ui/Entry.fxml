@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
@@ -8,25 +14,50 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="530.0" fitWidth="676.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/FondoP_Mesa%20de%20trabajo%201.png" />
          </image>
       </ImageView>
-      <TextField fx:id="nameClienteText" layoutX="69.0" layoutY="92.0" prefHeight="39.0" prefWidth="162.0" promptText="Nombre Cliente" />
-      <TextField fx:id="lastNameClienteText" layoutX="69.0" layoutY="176.0" prefHeight="39.0" prefWidth="162.0" promptText="Apellido Cliente" />
-      <TextField fx:id="phoneText" layoutX="69.0" layoutY="248.0" prefHeight="39.0" prefWidth="162.0" promptText="Telefono" />
-      <TextField fx:id="idClientText" layoutX="69.0" layoutY="326.0" prefHeight="39.0" prefWidth="162.0" promptText="Identificación" />
+      <TextField fx:id="nameClienteText" layoutX="69.0" layoutY="92.0" prefHeight="39.0" prefWidth="162.0" promptText="Nombre Cliente">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="lastNameClienteText" layoutX="69.0" layoutY="176.0" prefHeight="39.0" prefWidth="162.0" promptText="Apellido Cliente">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="phoneText" layoutX="69.0" layoutY="248.0" prefHeight="39.0" prefWidth="162.0" promptText="Telefono">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="idClientText" layoutX="69.0" layoutY="326.0" prefHeight="39.0" prefWidth="162.0" promptText="Identificación">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
       <TextField fx:id="nameProductText" layoutX="293.0" layoutY="66.0" prefHeight="39.0" prefWidth="162.0" promptText="Nombre del Articulo" />
-      <TextField fx:id="initialPaymentText" layoutX="293.0" layoutY="137.0" prefHeight="39.0" prefWidth="162.0" promptText="Abono Inicial" />
-      <TextField fx:id="reimaningBalanceText" layoutX="293.0" layoutY="226.0" prefHeight="39.0" prefWidth="162.0" promptText="Saldo Restante" />
-      <TextField fx:id="totalBalanceText" layoutX="293.0" layoutY="307.0" prefHeight="39.0" prefWidth="162.0" promptText="Saldo Total" />
-      <TextField fx:id="admisionText" layoutX="488.0" layoutY="105.0" prefHeight="39.0" prefWidth="162.0" promptText="Fecha de Ingreso" />
-      <TextField fx:id="consecutivoClientText" layoutX="488.0" layoutY="187.0" prefHeight="39.0" prefWidth="162.0" promptText="Consecutivo" />
-      <TextField fx:id="deliveryText" layoutX="488.0" layoutY="268.0" prefHeight="39.0" prefWidth="162.0" promptText="Fecha de Entrega" />
-      <TextArea fx:id="descriptionText" layoutX="332.0" layoutY="365.0" prefHeight="67.0" prefWidth="264.0" promptText="Descripción" wrapText="true" />
+      <TextField fx:id="initialPaymentText" layoutX="293.0" layoutY="148.0" prefHeight="39.0" prefWidth="162.0" promptText="Abono Inicial">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="reimaningBalanceText" layoutX="293.0" layoutY="226.0" prefHeight="39.0" prefWidth="162.0" promptText="Saldo Restante">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="totalBalanceText" editable="false" layoutX="293.0" layoutY="307.0" onAction="#totalPayment" prefHeight="39.0" prefWidth="162.0" promptText="Saldo Total">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="consecutivoClientText" layoutX="488.0" layoutY="187.0" prefHeight="39.0" prefWidth="162.0" promptText="Consecutivo">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextArea fx:id="descriptionText" layoutX="332.0" layoutY="365.0" prefHeight="78.0" prefWidth="286.0" promptText="Descripción" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font></TextArea>
       <Button layoutX="211.0" layoutY="471.0" mnemonicParsing="false" onAction="#loadBack" prefHeight="14.0" prefWidth="17.0" scaleX="0.8" scaleY="0.8">
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true" scaleX="2.0" scaleY="1.7">
@@ -51,5 +82,7 @@
             </ImageView>
          </graphic>
       </Button>
+      <DatePicker fx:id="admisionText" layoutX="488.0" layoutY="92.0" prefHeight="39.0" prefWidth="162.0" promptText="Fecha de Ingreso" />
+      <DatePicker fx:id="deliveryText" layoutX="488.0" layoutY="268.0" prefHeight="39.0" prefWidth="162.0" promptText="Fecha de Entrega" />
    </children>
 </Pane>

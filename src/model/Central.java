@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import CustomExceptions.AlreadyAddedNumberException;
+
 
 public class Central {
 	
@@ -9,17 +11,29 @@ public class Central {
 	
 	private ArrayList<Client> clients;
 	
-	public void countClients(Client c) {
+	
+	public void addClients(String name, String lastName, String number) throws AlreadyAddedNumberException{
+		findClient(number);
+		Client c = new Client (name, lastName, number);
 		clients.add(c);
 	}
 	
-	public Client search(ArrayList<Client> c, int id) {
+	private void findClient(String number) throws AlreadyAddedNumberException{
+		boolean found = false; 
+		for (int i = 0; i < clients.size() && !found; i++) {
+			if(clients.get(i).getPhone() == number) {
+				found = true;
+				throw new AlreadyAddedNumberException(number, clients.get(i).getName(), clients.get(i).getLastname());
+			}
+		}
+	}
+	public Client search(String number) {
 		
 		boolean found = false;
 		
-		for(int i = 0; i < c.size() && !found; i++) {
-			if(c.get(i).getId() == id) {
-				return c.get(i);
+		for(int i = 0; i < clients.size() && !found; i++) {
+			if(clients.get(i).getPhone().equals(number)) {
+				return clients.get(i);
 			}
 		}
 		return null;
@@ -28,6 +42,7 @@ public class Central {
 	public double total(Product p) {
 		return p.getPays() + p.getRemainingBalance();
 	}
+	
 	
 	public int repairWeek(String d1, String d2, String dateLocal) {
 

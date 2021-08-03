@@ -6,33 +6,31 @@ public class Client{
 	
 	private String name;
 	private String lastname;
-	private int id;
 	private String phone;
 	
 	//relations
 	
-	private ArrayList<Product> repair;
+	private ArrayList<Product> repairs;
 	
 	//contructor
 	
-	public Client(String name, String lastname, int id, String phone, ArrayList<Product> repair) {
+	public Client(String name, String lastname, String phone) {
 		this.name = name;
 		this.lastname = lastname;
-		this.id = id;
 		this.phone = phone;
-		repair = new ArrayList<Product>();
+		repairs = new ArrayList<Product>();
 	}
 
 	public void countRepair(Product p) {
-		repair.add(p);
+		repairs.add(p);
 	}
 	
 	public ArrayList<Product> getRepair() {
-		return repair;
+		return repairs;
 	}
 
-	public void setRepair(ArrayList<Product> repair) {
-		this.repair = repair;
+	public void setRepair(ArrayList<Product> repairs) {
+		this.repairs = repairs;
 	}
 
 	public String getName() {
@@ -51,14 +49,6 @@ public class Client{
 		this.lastname = lastname;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
@@ -66,15 +56,8 @@ public class Client{
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
-	public int compareById(Client c) {
-		int i = 0;
-		if (this.id > c.id) {
-			i = 1;
-		} else if (this.id < c.id) {
-			i = -1;
-		}
-		return i;
+	public void addProduct(Product p) {
+		repairs.add(p);
 	}
 	
 }
