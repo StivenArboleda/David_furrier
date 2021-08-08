@@ -1,12 +1,10 @@
 package ui;
+
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.JOptionPane;
 
 import CustomExceptions.AlreadyAddedNumberException;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,17 +23,19 @@ import model.Central;
 import model.Client;
 
 public class FurrierController {
-	
+
 	private Central c;
-	
+
 	private Stage stage;
 	@FXML
 	private BorderPane basePane;
-	
+
 	public FurrierController(Stage s) throws IOException {
-		stage=s;
+		c = new Central();
+		stage = s;
 	}
-	public void loadMenuScreen(){
+
+	public void loadMenuScreen() {
 		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("InitialMenu.fxml"));
 		fxmload.setController(this);
 		Parent root;
@@ -47,7 +47,7 @@ public class FurrierController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	void loadDeliveries(ActionEvent event) {
 		loadDeliveriesScreen();
@@ -65,9 +65,10 @@ public class FurrierController {
 
 	@FXML
 	void loadReports(ActionEvent event) {
-		
+
 	}
-	public void loadEntryScreen(){
+
+	public void loadEntryScreen() {
 		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("Entry.fxml"));
 		fxmload.setController(this);
 		Parent root;
@@ -79,47 +80,49 @@ public class FurrierController {
 			e.printStackTrace();
 		}
 	}
+
 	@FXML
-    private TextField nameClienteText;
+	private TextField nameClienteText;
 
-    @FXML
-    private TextField lastNameClienteText;
+	@FXML
+	private TextField lastNameClienteText;
 
-    @FXML
-    private TextField phoneText;
+	@FXML
+	private TextField phoneText;
 
-    @FXML
-    private TextField idClientText;
+	@FXML
+	private TextField idClientText;
 
-    @FXML
-    private TextField nameProductText;
+	@FXML
+	private TextField nameProductText;
 
-    @FXML
-    private TextField initialPaymentText;
+	@FXML
+	private TextField initialPaymentText;
 
-    @FXML
-    private TextField reimaningBalanceText;
+	@FXML
+	private TextField reimaningBalanceText;
 
-    @FXML
-    private TextField totalBalanceText;
+	@FXML
+	private TextField totalBalanceText;
 
-    @FXML
-    private DatePicker admisionText;
+	@FXML
+	private DatePicker admisionText;
 
-    @FXML
-    private TextField consecutivoClientText;
+	@FXML
+	private TextField consecutivoClientText;
 
-    @FXML
-    private DatePicker deliveryText;
+	@FXML
+	private DatePicker deliveryText;
 
-    @FXML
-    private TextArea descriptionText;
+	@FXML
+	private TextArea descriptionText;
 
-    @FXML
-    void addEntry(ActionEvent event) {
+	@FXML
+	void addEntry(ActionEvent event) {
 
-    }
-    public void loadDeliveriesScreen(){
+	}
+
+	public void loadDeliveriesScreen() {
 		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("Deliveries.fxml"));
 		fxmload.setController(this);
 		Parent root;
@@ -131,42 +134,43 @@ public class FurrierController {
 			e.printStackTrace();
 		}
 	}
-    @FXML
-    private TableView<Client> tableReports;
-    @FXML
-    private TableColumn<Client, String> idName;
 
-    @FXML
-    private TableColumn<Client, String> idLastName;
+	@FXML
+	private TableView<Client> tableReports;
+	@FXML
+	private TableColumn<Client, String> idName;
 
-    @FXML
-    private TableColumn<Client, Integer> idIdentification;
+	@FXML
+	private TableColumn<Client, String> idLastName;
 
-    @FXML
-    private TableColumn<Client, String> idPhone;
+	@FXML
+	private TableColumn<Client, Integer> idIdentification;
 
-    @FXML
-    private TableColumn<Client, Double> idRemainingBalance;
+	@FXML
+	private TableColumn<Client, String> idPhone;
 
-    @FXML
-    private TableColumn<Client, Double> idPayment;
+	@FXML
+	private TableColumn<Client, Double> idRemainingBalance;
 
-    @FXML
-    private TableColumn<Client, String> idState;
+	@FXML
+	private TableColumn<Client, Double> idPayment;
 
-    @FXML
-    private TextField idText;
+	@FXML
+	private TableColumn<Client, String> idState;
 
-    @FXML
-    private TextField consecutivoText;
+	@FXML
+	private TextField idText;
 
-    @FXML
-    void searchReport(ActionEvent event) {
-    	loadTableDeliveries();
-    }
+	@FXML
+	private TextField consecutivoText;
 
-   public void loadTableDeliveries() {
-    	basePane.setOnKeyPressed(null);
+	@FXML
+	void searchReport(ActionEvent event) {
+		loadTableDeliveries();
+	}
+
+	public void loadTableDeliveries() {
+		basePane.setOnKeyPressed(null);
 		FXMLLoader fxmload = new FXMLLoader(getClass().getResource("Deliveries.fxml"));
 		fxmload.setController(this);
 		Parent root;
@@ -178,85 +182,106 @@ public class FurrierController {
 			e.printStackTrace();
 		}
 		tableReports.getItems().clear();
-		//METODO PARA LISTAR TODOS LOS PRODUCTOS
-			ObservableList<Client>list= FXCollections.observableArrayList();
-			tableReports.setItems(list);
-			idName.setCellValueFactory(new PropertyValueFactory<Client,String>("name"));
-			idLastName.setCellValueFactory(new PropertyValueFactory<Client,String>("lastName"));
-			idIdentification.setCellValueFactory(new PropertyValueFactory<Client,Integer>("id"));
-			idPhone.setCellValueFactory(new PropertyValueFactory<Client,String>("phone"));
-			idRemainingBalance.setCellValueFactory(new PropertyValueFactory<Client,Double>("remainingBalance"));
-			idPayment.setCellValueFactory(new PropertyValueFactory<Client,Double>("pays"));
-			idState.setCellValueFactory(new PropertyValueFactory<Client,String>("state"));
-			
-    }
-   @FXML
-   void loadBack(ActionEvent event) {
-	   loadMenuScreen();
-   }
-   @FXML
-   void loadBackReports(ActionEvent event) {
-	   loadMenuScreen();
-   }
+		// METODO PARA LISTAR TODOS LOS PRODUCTOS
+		ObservableList<Client> list = FXCollections.observableArrayList();
+		tableReports.setItems(list);
+		idName.setCellValueFactory(new PropertyValueFactory<Client, String>("name"));
+		idLastName.setCellValueFactory(new PropertyValueFactory<Client, String>("lastName"));
+		idIdentification.setCellValueFactory(new PropertyValueFactory<Client, Integer>("id"));
+		idPhone.setCellValueFactory(new PropertyValueFactory<Client, String>("phone"));
+		idRemainingBalance.setCellValueFactory(new PropertyValueFactory<Client, Double>("remainingBalance"));
+		idPayment.setCellValueFactory(new PropertyValueFactory<Client, Double>("pays"));
+		idState.setCellValueFactory(new PropertyValueFactory<Client, String>("state"));
 
-/*	@FXML
-   void loadSave(ActionEvent event) {
-	   totalPayment();
-	   
-	   Timer timer = new Timer();
-	   
-	   TimerTask loadAgain = new TimerTask() {
-		
-		@Override
-		public void run() {
-			
-			Platform.runLater(new Runnable() {
-				public void run() {
-					loadEntryScreen();
-				}
-			});
-		}
-	};
-	timer.schedule(loadAgain, 3000);
-	}*/
-   
-   @FXML
-   void loadSave(ActionEvent event) {
-	   double initial = Double.parseDouble(initialPaymentText.getText());
-	   double reimaning = Double.parseDouble(reimaningBalanceText.getText());
-	   double total = initial + reimaning;
-	   JOptionPane.showMessageDialog(null, "El saldo total es: " + total);
-	   try {
-		c.addClients(nameClienteText.getText(), lastNameClienteText.getText(), phoneText.getText());
-		loadEntryScreen();
-	} catch (AlreadyAddedNumberException e) {
-		
-		e.printStackTrace();
 	}
-	   loadEntryScreen();
-   }
-   
-   void loadProduct() {
-	   
-   }
-   
-   @FXML
-   void loadSearch(ActionEvent event) {
-	   
-	   String phone = idText.getText();
-	   Client client = c.search(phone);
-	   if( client != null){
-		   //consecutivoText.setText(client.getRepair().get(0).getConsecutive() + "");
-		   consecutivoText.setText("Hola c:");
-	   }
-	   
-   }
-   /*@FXML
-   void totalPayment() {
-	   if(initialPaymentText.getText() != null && reimaningBalanceText.getText() != null) {
-		   double initial = Double.parseDouble(initialPaymentText.getText());
-		   double reimaning = Double.parseDouble(reimaningBalanceText.getText());
-		   totalBalanceText.setText(initial+reimaning+"");
-	   }
-   }*/
+
+	@FXML
+	void loadBack(ActionEvent event) {
+		loadMenuScreen();
+	}
+
+	@FXML
+	void loadBackReports(ActionEvent event) {
+		loadMenuScreen();
+	}
+
+	/*
+	 * @FXML void loadSave(ActionEvent event) { totalPayment();
+	 * 
+	 * Timer timer = new Timer();
+	 * 
+	 * TimerTask loadAgain = new TimerTask() {
+	 * 
+	 * @Override public void run() {
+	 * 
+	 * Platform.runLater(new Runnable() { public void run() { loadEntryScreen(); }
+	 * }); } }; timer.schedule(loadAgain, 3000); }
+	 */
+
+	@FXML
+	void loadSave(ActionEvent event) {
+
+		try {
+			if (nameClienteText.getText().equals("") || lastNameClienteText.getText().equals("")
+					|| phoneText.getText().equals("")) {
+
+				JOptionPane.showMessageDialog(null, "Por favor llenar los datos del CLIENTE completos.");
+
+			} else if (nameProductText.getText().equals("") || initialPaymentText.getText().equals("")
+					|| reimaningBalanceText.getText().equals("") || consecutivoClientText.getText().equals("")
+					|| descriptionText.getText().equals("") || admisionText.getValue() == null
+					|| deliveryText.getValue() == null) {
+
+				JOptionPane.showMessageDialog(null, "Por favor llenar los datos del PRODUCTO completos.");
+
+			} else {
+				try {
+					double initial = Double.parseDouble(initialPaymentText.getText());
+					double reimaning = Double.parseDouble(reimaningBalanceText.getText());
+					double total = initial + reimaning;
+					JOptionPane.showMessageDialog(null, "El saldo total es: " + total);
+
+					Client c1 = new Client(nameClienteText.getText(), lastNameClienteText.getText(),
+							phoneText.getText());
+
+					c.addClients(c1);
+					loadEntryScreen();
+
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(null,
+							"El saldo restante y el abono deben ser números. \n Sin puntos ni comas.");
+				}
+
+			}
+
+		} catch (AlreadyAddedNumberException e) {
+			e.getMessage();
+		}
+	}
+
+	void loadProduct() {
+
+	}
+
+	@FXML
+	void loadSearch(ActionEvent event) {
+
+		String phone = idText.getText();
+		Client client = c.search(phone);
+		if (client != null) {
+			// consecutivoText.setText(client.getRepair().get(0).getConsecutive() + "");
+			consecutivoText.setText("Hola c:");
+		}
+
+	}
+
+	@FXML
+	void totalPayment() {
+		/*
+		 * if(initialPaymentText.getText() != null && reimaningBalanceText.getText() !=
+		 * null) { double initial = Double.parseDouble(initialPaymentText.getText());
+		 * double reimaning = Double.parseDouble(reimaningBalanceText.getText());
+		 * totalBalanceText.setText(initial+reimaning+""); }
+		 */
+	}
 }

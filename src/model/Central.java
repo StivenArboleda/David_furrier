@@ -11,19 +11,23 @@ public class Central {
 	
 	private ArrayList<Client> clients;
 	
+	public Central() {
+		clients = new ArrayList<Client>();
+	}
 	
-	public void addClients(String name, String lastName, String number) throws AlreadyAddedNumberException{
-		findClient(number);
-		Client c = new Client (name, lastName, number);
+	public void addClients(Client c) throws AlreadyAddedNumberException{
+		findClient(c);
 		clients.add(c);
 	}
 	
-	private void findClient(String number) throws AlreadyAddedNumberException{
-		boolean found = false; 
-		for (int i = 0; i < clients.size() && !found; i++) {
-			if(clients.get(i).getPhone() == number) {
-				found = true;
-				throw new AlreadyAddedNumberException(number, clients.get(i).getName(), clients.get(i).getLastname());
+	private void findClient(Client c2) throws AlreadyAddedNumberException{
+		
+		for (int i = 0; i < clients.size(); i++) {
+			if(clients.get(i).getPhone() == c2.getPhone()) {
+				if(!(clients.get(i).getName().equalsIgnoreCase(c2.getName())) || clients.get(i).getLastname().equalsIgnoreCase(c2.getLastname())){
+					
+					throw new AlreadyAddedNumberException(clients.get(i).getPhone(), clients.get(i).getName(), clients.get(i).getLastname());
+				}
 			}
 		}
 	}
